@@ -2,58 +2,29 @@
 
 Languages files to translate the [Laravel Backpack Admin Panel](https://backpackforlaravel.com/)
 
+## Translated modules
+
+* [Backpack BASE](https://github.com/Laravel-Backpack/Base)
+* [Backpack CRUD](https://github.com/Laravel-Backpack/CRUD)
+* [Backpack PermissionManager](https://github.com/Laravel-Backpack/BackupManager)
+* [Backpack Backup](https://github.com/Laravel-Backpack/PermissionManager)
 
 ## Install
 
-This extra field is just a collection of controlles/models/migrations and views, so, you just need to download and put in your laravel folder.
+You just need to download and put in your laravel folder.
 
-#### Installation type (A) - download
-
+#### Installation - download
 
 1) Download the last version of this repository.
 
-2) Paste the 'app', 'migrations' and 'resources' folders over your projects (merge them). No file overwrite warnings should come up.
+2) Paste the 'resources' folder over your project (merge them). No file overwrite warnings should come up.
 
-3) Put this in your Backpack Crud Controller
-
+3) Acess your config/app.php and change the locale to pt-Br
 ```
-// ------ CRUD FIELDS
-$this->crud->addField([
-// Image manager
-  'label' => "Upload images",
-  'name' => "images",
-  'type' => 'image_manager',
-  'upload' => true,
-], 'update');
+'locale' => 'pt-Br',
 ```
 
-4) Run the migration to have the database table we need:
+4) Clear your cache [Optional]
 ```
-php artisan migrate
+php artisan cache:clear
 ```
-
-5) Add upload to your routes file:
-
-```
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
-    // Upload crud
-    Route::post('server/upload/{id}/save', 'UploadController@save');
-    Route::delete('server/upload/delete/{uuid}', 'UploadController@delete');
-    Route::get('server/upload/recover/{id}', 'UploadController@recover');
-});
-```
-## Package installation
-
-/**
-To do
-**/
-
-## Change log
-
-/**
-To do
-**/
-
-## Contributing
-
-Any help with new features/upgrades/language would be appreciated
